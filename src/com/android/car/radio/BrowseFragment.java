@@ -68,6 +68,14 @@ public class BrowseFragment extends Fragment {
         mRadioController.getProgramList().observe(this, mBrowseAdapter::setProgramList);
     }
 
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser) {
+            mRadioController.setSkipMode(SkipMode.BROWSE);
+        }
+    }
+
     private void handlePresetItemFavoriteChanged(Program program, boolean saveAsFavorite) {
         if (saveAsFavorite) {
             mRadioStorage.addFavorite(program);
