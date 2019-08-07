@@ -52,6 +52,9 @@ public class ManualTunerFragment extends Fragment {
         ProgramInfo current = mRadioController.getCurrentProgram().getValue();
         if (current == null) return;
         mController.switchProgramType(ProgramType.fromSelector(current.getSelector()));
+        if (isVisibleToUser) {
+            mRadioController.setSkipMode(SkipMode.TUNE);
+        }
     }
 
     static ManualTunerFragment newInstance(RadioController radioController) {

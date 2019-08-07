@@ -71,6 +71,9 @@ public class FavoritesFragment extends Fragment {
         if (!isVisibleToUser && mBrowseAdapter != null) {
             mBrowseAdapter.removeFormerFavorites();
         }
+        if (isVisibleToUser) {
+            mRadioController.setSkipMode(SkipMode.FAVORITES);
+        }
     }
 
     private void handlePresetItemFavoriteChanged(Program program, boolean saveAsFavorite) {
