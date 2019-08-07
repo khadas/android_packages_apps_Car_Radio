@@ -201,7 +201,9 @@ public class RadioAppServiceWrapper {
             throw new IllegalStateException(
                     "This is not a remote service wrapper, you can't unbind it");
         }
-        callService(service -> service.removeCallback(mCallback));
+        try {
+            callService(service -> service.removeCallback(mCallback));
+        } catch (IllegalStateException e) { }  // it's fine if the service is not connected
         mClientContext.unbindService(mServiceConnection);
     }
 
