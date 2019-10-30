@@ -43,11 +43,7 @@ LOCAL_USE_AAPT2 := true
 LOCAL_JAVA_LIBRARIES += android.car
 
 LOCAL_STATIC_JAVA_LIBRARIES := \
-    androidx.lifecycle_lifecycle-livedata \
-    androidx.sqlite_sqlite-framework \
-    androidx.sqlite_sqlite \
-    car-androidx-room-common-nodeps \
-    car-androidx-room-runtime-nodeps
+    androidx.lifecycle_lifecycle-livedata
 
 LOCAL_ANNOTATION_PROCESSORS := \
     car-androidx-annotation-nodeps \
@@ -74,6 +70,7 @@ LOCAL_DEX_PREOPT := false
 
 LOCAL_STATIC_ANDROID_LIBRARIES += \
     androidx-constraintlayout_constraintlayout \
+    androidx.room_room-runtime \
     car-apps-common \
     car-media-common \
     car-broadcastradio-support
