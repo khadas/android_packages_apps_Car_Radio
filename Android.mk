@@ -73,6 +73,7 @@ LOCAL_STATIC_ANDROID_LIBRARIES += \
     androidx-constraintlayout_constraintlayout \
     car-apps-common \
     car-media-common \
+    car-ui-lib \
     car-broadcastradio-support
 
 # Including the resources for the static android libraries allows to pick up their static overlays.
