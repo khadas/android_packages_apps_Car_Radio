@@ -20,13 +20,14 @@ import android.car.Car;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import com.android.car.apps.common.widget.CarTabLayout;
-import com.android.car.media.common.MediaAppSelectorWidget;
+import com.android.car.media.common.source.MediaSource;
 import com.android.car.media.common.source.MediaSourceViewModel;
 import com.android.car.radio.bands.ProgramType;
 import com.android.car.radio.util.Log;
@@ -67,8 +68,9 @@ public class RadioActivity extends FragmentActivity {
         setContentView(R.layout.radio_activity);
         mBandSelector = findViewById(R.id.band_toggle_button);
 
-        MediaAppSelectorWidget appSelector = findViewById(R.id.app_switch_container);
-        appSelector.setFragmentActivity(this);
+        View appSelector = findViewById(R.id.app_selector_container);
+        Intent appSelectorIntent = MediaSource.getSourceSelectorIntent(this, false);
+        appSelector.setOnClickListener(e -> startActivity(appSelectorIntent));
 
         mRadioController = new RadioController(this);
         mBandSelector.setCallback(mRadioController::switchBand);
