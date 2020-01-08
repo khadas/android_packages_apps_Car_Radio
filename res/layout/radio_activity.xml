@@ -26,47 +26,14 @@ limitations under the License.
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="@dimen/car_ui_toolbar_first_row_height" />
 
-    <com.android.car.apps.common.widget.CarTabLayout
-        android:id="@+id/tabs"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/tab_height"
-        android:layout_marginLeft="@dimen/tab_margin_left"
-        android:layout_marginRight="@dimen/tab_margin_right"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/band_toggle_button"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-    <com.android.car.radio.widget.BandSelectorToggle
-        android:id="@+id/band_toggle_button"
-        android:layout_width="@dimen/band_selector_size"
-        android:layout_height="@dimen/band_selector_size"
-        android:layout_marginTop="@dimen/control_button_margin"
-        android:layout_marginRight="@dimen/control_button_margin"
-        android:scaleType="center"
-        app:layout_constraintEnd_toStartOf="@+id/app_selector_container"
-        app:layout_constraintBottom_toTopOf="@+id/app_bar_bottom"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-    <!-- TODO (b/143297376): Replace this and all the toolbar elements with
-    com.android.car.ui.toolbar.Toolbar -->
-    <FrameLayout
-        android:id="@+id/app_selector_container"
-        android:layout_width="@dimen/app_selector_icon_touch_target"
-        android:layout_height="@dimen/app_selector_icon_touch_target"
-        android:background="?android:attr/selectableItemBackground"
-        android:layout_marginRight="@dimen/app_selector_margin_x"
+    <com.android.car.ui.toolbar.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="@string/app_name"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/app_bar_bottom"
-        app:layout_constraintRight_toRightOf="parent">
-
-        <ImageView
-            android:id="@+id/app_selector"
-            android:layout_width="@dimen/app_selector_icon_size"
-            android:layout_height="@dimen/app_selector_icon_size"
-            android:layout_gravity="center"
-            android:src="@drawable/ic_app_switch"
-            android:tint="@color/icon_tint" />
-    </FrameLayout>
+        app:logo="@drawable/logo_fm_radio"
+        app:state="home"/>
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewpager"
@@ -76,14 +43,14 @@ limitations under the License.
         android:layout_weight="@integer/radio_activity_view_weight"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tabs"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
         app:layout_constraintBottom_toTopOf="@+id/main_radio_display" />
 
     <TextView
         android:id="@+id/status_message"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tabs"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
         app:layout_constraintBottom_toTopOf="@+id/main_radio_display"
         android:visibility="gone"
         style="@style/RadioStatusMessage" />
