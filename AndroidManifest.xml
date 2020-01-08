@@ -16,6 +16,7 @@
   -->
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.android.car.radio">
     <uses-sdk
         android:minSdkVersion="25"
@@ -62,5 +63,13 @@
                 <action android:name="android.car.intent.action.PLAY_BROADCASTRADIO" />
             </intent-filter>
         </service>
+
+        <!-- Workaround for b/113294940, remove when converting to Android.bp -->
+        <provider
+            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
+            tools:replace="android:authorities"
+            android:authorities="${applicationId}"
+            android:exported="false"
+            android:multiprocess="true" />
     </application>
 </manifest>
