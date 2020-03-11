@@ -16,6 +16,8 @@
 
 package com.android.car.radio;
 
+import static android.car.media.CarMediaManager.MEDIA_SOURCE_MODE_BROWSE;
+
 import android.car.Car;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
@@ -89,7 +91,8 @@ public class RadioActivity extends FragmentActivity {
         updateMenuItems();
         setupTabsWithViewPager(viewPager);
 
-        MediaSourceViewModel model = MediaSourceViewModel.get(getApplication());
+        MediaSourceViewModel model =
+                MediaSourceViewModel.get(getApplication(), MEDIA_SOURCE_MODE_BROWSE);
         model.getPrimaryMediaSource().observe(this, source -> {
             if (source != null) {
                 // Always go through the trampoline activity to keep all the dispatching logic
