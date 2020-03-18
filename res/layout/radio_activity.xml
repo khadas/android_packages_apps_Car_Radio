@@ -26,15 +26,6 @@ limitations under the License.
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="@dimen/car_ui_toolbar_first_row_height" />
 
-    <com.android.car.ui.toolbar.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:title="@string/app_name"
-        app:layout_constraintTop_toTopOf="parent"
-        app:logo="@drawable/logo_fm_radio"
-        app:car_ui_state="home"/>
-
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewpager"
         android:layout_width="@dimen/radio_activity_pager_size"
@@ -43,14 +34,14 @@ limitations under the License.
         android:layout_weight="@integer/radio_activity_view_weight"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/main_radio_display" />
 
     <TextView
         android:id="@+id/status_message"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/main_radio_display"
         android:visibility="gone"
         style="@style/RadioStatusMessage" />
