@@ -33,7 +33,7 @@ limitations under the License.
         app:title="@string/app_name"
         app:layout_constraintTop_toTopOf="parent"
         app:logo="@drawable/logo_fm_radio"
-        app:state="home"/>
+        app:car_ui_state="home"/>
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewpager"
