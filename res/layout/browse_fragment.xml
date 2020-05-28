@@ -23,6 +23,6 @@ limitations under the License.
         android:background="@color/browse_fragment_list_color"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="@dimen/tab_margin_left"
+        android:layout_marginStart="@dimen/tab_margin_start"
     />
 </LinearLayout>
