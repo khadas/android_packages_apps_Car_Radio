@@ -60,8 +60,8 @@ limitations under the License.
          android:layout_width="@dimen/radio_activity_playback_width"
          android:layout_height="@dimen/playback_card_height"
          android:layout_marginBottom="@dimen/playback_card_margin_bottom"
-         android:layout_marginLeft="@dimen/playback_card_margin_horizontal"
-         android:layout_marginRight="@dimen/playback_card_margin_horizontal"
+         android:layout_marginStart="@dimen/playback_card_margin_horizontal"
+         android:layout_marginEnd="@dimen/playback_card_margin_horizontal"
          app:layout_constraintBottom_toBottomOf="parent"
          app:layout_constraintEnd_toEndOf="parent"
          app:layout_constraintStart_toStartOf="parent" />
