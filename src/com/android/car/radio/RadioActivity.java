@@ -18,6 +18,9 @@ package com.android.car.radio;
 
 import static android.car.media.CarMediaManager.MEDIA_SOURCE_MODE_BROWSE;
 
+import static com.android.car.ui.core.CarUi.requireToolbar;
+import static com.android.car.ui.toolbar.Toolbar.State.HOME;
+
 import android.car.Car;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
@@ -32,9 +35,11 @@ import com.android.car.media.common.source.MediaSource;
 import com.android.car.media.common.source.MediaSourceViewModel;
 import com.android.car.radio.bands.ProgramType;
 import com.android.car.radio.util.Log;
+import com.android.car.ui.baselayout.Insets;
+import com.android.car.ui.baselayout.InsetsChangedListener;
 import com.android.car.ui.toolbar.MenuItem;
 import com.android.car.ui.toolbar.TabLayout;
-import com.android.car.ui.toolbar.Toolbar;
+import com.android.car.ui.toolbar.ToolbarController;
 
 import java.util.Arrays;
 import java.util.List;
@@ -42,7 +47,7 @@ import java.util.List;
 /**
  * The main activity for the radio app.
  */
-public class RadioActivity extends FragmentActivity {
+public class RadioActivity extends FragmentActivity implements InsetsChangedListener {
     private static final String TAG = "BcRadioApp.activity";
 
     /**
@@ -59,8 +64,15 @@ public class RadioActivity extends FragmentActivity {
 
     private RadioController mRadioController;
     private BandController mBandController = new BandController();
-    private Toolbar mToolbar;
+    private ToolbarController mToolbar;
     private RadioPagerAdapter mRadioPagerAdapter;
+
+    @Override
+    public void onCarUiInsetsChanged(Insets insets) {
+        // This InsetsChangedListener is just a marker that we will later handle
+        // insets in fragments, since the fragments aren't added immediately.
+        // Otherwise CarUi will apply the insets to the content view incorrectly.
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,7 +96,10 @@ public class RadioActivity extends FragmentActivity {
         ViewPager viewPager = findViewById(R.id.viewpager);
         viewPager.setAdapter(mRadioPagerAdapter);
 
-        mToolbar = requireViewById(R.id.toolbar);
+        mToolbar = requireToolbar(this);
+        mToolbar.setState(HOME);
+        mToolbar.setTitle(R.string.app_name);
+        mToolbar.setLogo(R.drawable.logo_fm_radio);
         mToolbar.registerOnTabSelectedListener(t ->
                 viewPager.setCurrentItem(mToolbar.getTabLayout().getTabPosition(t)));
 
