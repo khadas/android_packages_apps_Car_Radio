@@ -101,7 +101,7 @@ public class RadioActivity extends FragmentActivity implements InsetsChangedList
         mToolbar.setTitle(R.string.app_name);
         mToolbar.setLogo(R.drawable.logo_fm_radio);
         mToolbar.registerOnTabSelectedListener(t ->
-                viewPager.setCurrentItem(mToolbar.getTabLayout().getTabPosition(t)));
+                viewPager.setCurrentItem(mToolbar.getTabPosition(t)));
 
         updateMenuItems();
         setupTabsWithViewPager(viewPager);
